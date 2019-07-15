@@ -4,7 +4,7 @@ import datetime
 import time
 
 init = False
-dry = 1
+dry = 0
 
 GPIO.setmode(GPIO.BOARD) # Broadcom pin-numbering scheme
 
