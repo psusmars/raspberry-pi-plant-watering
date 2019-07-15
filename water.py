@@ -4,6 +4,7 @@ import datetime
 import time
 
 init = False
+dry = 1
 
 GPIO.setmode(GPIO.BOARD) # Broadcom pin-numbering scheme
 
@@ -30,7 +31,7 @@ def auto_water(delay = 5, pump_pin = 7, water_sensor_pin = 8):
     try:
         while 1 and consecutive_water_count < 10:
             time.sleep(delay)
-            wet = get_status(pin = water_sensor_pin) == 0
+            wet = get_status(pin = water_sensor_pin) == dry
             if not wet:
                 if consecutive_water_count < 5:
                     pump_on(pump_pin, 1)
