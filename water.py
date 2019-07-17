@@ -42,6 +42,7 @@ def auto_water(delay = 5, pump_pin = 7, water_sensor_pin = 8):
             time.sleep(delay)
             plant_is_wet = not get_status(pin = water_sensor_pin) == dry
             if plant_is_wet:
+                continue
             last_watered = get_last_watered_as_datetime()
             if last_watered is None or (datetime.now() - last_watered).days > 0:
                 print("Would water now")
