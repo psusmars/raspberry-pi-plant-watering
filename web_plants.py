@@ -33,7 +33,7 @@ def hello():
 def check_last_watered():
     last_watered = water.get_last_watered()
     if "NEVER" not in last_watered:
-        laster_watered = f"Last watered: {last_watered}"
+        last_watered = f"Last watered: {last_watered}"
     templateData = template(text = last_watered)
     return render_template('main.html', **templateData)
 
