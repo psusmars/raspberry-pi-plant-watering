@@ -3,6 +3,7 @@ import psutil
 import datetime
 import water
 import os
+import sys
 from flask_basicauth import BasicAuth
 
 app = Flask(__name__)
@@ -17,8 +18,8 @@ def template(title = "HELLO!", text = ""):
         }
     return templateDate
 
-app.config['BASIC_AUTH_USERNAME'] = os.environ['USER']
-app.config['BASIC_AUTH_PASSWORD'] = os.environ['PASSWORD']
+app.config['BASIC_AUTH_USERNAME'] = sys.argv[1]
+app.config['BASIC_AUTH_PASSWORD'] = sys.argv[2]
 
 basic_auth = BasicAuth(app)
 
