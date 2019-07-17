@@ -45,10 +45,7 @@ def auto_water(delay = 5, pump_pin = 7, water_sensor_pin = 8):
                 continue
             last_watered = get_last_watered_as_datetime()
             if last_watered is None or (datetime.now() - last_watered).days > 0:
-                print("Would water now")
-                # pump_on(pump_pin, DURATION_TO_WATER_IN_SECONDS)
-                # TODO: Remove the set last watered
-                set_last_watered()
+                pump_on(pump_pin, DURATION_TO_WATER_IN_SECONDS)
     except KeyboardInterrupt: # If CTRL+C is pressed, exit cleanly:
         GPIO.cleanup() # cleanup all GPI
 
