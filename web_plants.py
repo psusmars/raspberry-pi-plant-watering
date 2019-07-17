@@ -3,6 +3,7 @@ import psutil
 import datetime
 import water
 import os
+from flask_basicauth import BasicAuth
 
 app = Flask(__name__)
 
@@ -16,11 +17,18 @@ def template(title = "HELLO!", text = ""):
         }
     return templateDate
 
+app.config['BASIC_AUTH_USERNAME'] = os.environ['USER']
+app.config['BASIC_AUTH_PASSWORD'] = os.environ['PASSWORD']
+
+basic_auth = BasicAuth(app)
+
+@basic_auth.required
 @app.route("/")
 def hello():
     templateData = template()
     return render_template('main.html', **templateData)
 
+@basic_auth.required
 @app.route("/last_watered")
 def check_last_watered():
     last_watered = water.get_last_watered()
@@ -29,6 +37,7 @@ def check_last_watered():
     templateData = template(text = last_watered)
     return render_template('main.html', **templateData)
 
+@basic_auth.required
 @app.route("/sensor")
 def action():
     status = water.get_status()
@@ -41,12 +50,14 @@ def action():
     templateData = template(text = message)
     return render_template('main.html', **templateData)
 
+@basic_auth.required
 @app.route("/water")
 def action2():
     water.pump_on()
     templateData = template(text = "Watered Once")
     return render_template('main.html', **templateData)
 
+@basic_auth.required
 @app.route("/auto/water/<toggle>")
 def auto_water(toggle):
     running = False
