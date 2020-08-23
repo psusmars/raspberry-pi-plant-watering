@@ -1,5 +1,12 @@
-python-dateutil
-RPi.GPIO
-flask
-psutil
-Flask-BasicAuth
+click==7.1.2
+Flask==1.1.2
+Flask-BasicAuth==0.2.0
+gunicorn==20.0.4
+itsdangerous==1.1.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+psutil==5.7.2
+python-dateutil==2.8.1
+RPi.GPIO==0.7.0
+six==1.15.0
+Werkzeug==1.0.1
