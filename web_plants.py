@@ -65,7 +65,7 @@ def auto_water(toggle):
                 if process.cmdline()[1] == 'auto_water.py':
                     templateData = template(text = "Already running")
                     running = True
-            except:
+            except Exception:
                 pass
         if not running:
             os.system("python3 auto_water.py&")
