@@ -56,6 +56,7 @@ def action2():
     return render_template('main.html', **templateData)
 
 def create_process():
+    running = False
     templateData = template(text = "Auto Watering On")
     for process in psutil.process_iter():
         try:
@@ -70,7 +71,6 @@ def create_process():
 
 @app.route("/auto/water/<toggle>")
 def auto_water(toggle):
-    running = False
     if toggle == "ON":
         templateData = create_process()
     else:
