@@ -1,6 +1,6 @@
 server {
  
-    server_name simpleapp.techcoil.com;
+    server_name water.susmarski.com;
     listen 80;
     root /var/flaskapp/water/static;
  
